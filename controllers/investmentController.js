@@ -57,3 +57,15 @@ exports.invest = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+
+// 📜 MES INVESTISSEMENTS
+exports.getMyInvestments = async (req, res) => {
+  try {
+    const investments = await Investment.find({ investor: req.user.id })
+      .populate('project', 'title targetCapital');
+    res.json(investments);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};

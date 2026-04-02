@@ -32,5 +32,22 @@ router.get('/admin/dashboard', protect, authorize('admin'), adminCtrl.getGlobalS
 //Pour authentifier
 router.post('/register', authCtrl.register);
 router.post('/login', authCtrl.login);
+// _____
+
+// -- AUTH / USER --
+router.put('/balance', protect, authorize('investor'), authCtrl.topUpBalance);
+
+// -- PROJECTS --
+router.put('/projects/:id', protect, authorize('owner'), projectCtrl.updateProject);
+router.delete('/projects/:id', protect, authorize('owner'), projectCtrl.deleteProject);
+router.patch('/projects/:id/close', protect, authorize('owner'), projectCtrl.closeProject);
+
+// -- INVESTMENTS --
+router.get('/my-investments', protect, authorize('investor'), investCtrl.getMyInvestments);
+
+// -- ADMIN --
+router.get('/admin/users/:role', protect, authorize('admin'), adminCtrl.getAllByRole);
+router.get('/admin/portfolio/:id', protect, authorize('admin'), adminCtrl.getUserPortfolio);
+
 
 module.exports = router;

@@ -49,3 +49,19 @@ exports.login = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+// 💰 ALIMENTER LE SOLDE (Investor)
+exports.topUpBalance = async (req, res) => {
+  try {
+    const { amount } = req.body;
+    if (amount <= 0) return res.status(400).json({ message: "Montant invalide" });
+
+    const user = await User.findById(req.user.id);
+    user.balance += amount;
+    await user.save();
+
+    res.json({ message: "Solde mis à jour", newBalance: user.balance });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
