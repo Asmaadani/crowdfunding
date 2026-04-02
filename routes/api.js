@@ -1,21 +1,17 @@
 const express = require('express');
 const router = express.Router();
 
-// Middlewares
 const { protect, authorize } = require('../middlewares/auth');
 
-// Modèles 
 const Project = require('../models/Project'); 
 const User = require('../models/user');
 
-// Contrôleurs
 const projectCtrl = require('../controllers/projectController');
 const investCtrl = require('../controllers/investmentController');
 const adminCtrl = require('../controllers/adminController');
 const authCtrl = require('../controllers/authController');
 
-// _____________________________________________
-// ROUTES PUBLIQUES (OU AUTHENTIFIÉES)
+// ROUTES PUBLIQUES 
 router.post('/projects', protect, authorize('owner'), projectCtrl.createProject);
 router.get('/my-projects', protect, authorize('owner'), projectCtrl.getMyProjects);
 

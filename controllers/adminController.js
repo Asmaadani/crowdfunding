@@ -20,7 +20,7 @@ exports.getGlobalStats = async (req, res) => {
   }
 };
 
-// 👥 LISTER TOUS LES UTILISATEURS PAR RÔLE
+// LISTER TOUS LES UTILISATEURS PAR RÔLE
 exports.getAllByRole = async (req, res) => {
   try {
     const users = await User.find({ role: req.params.role });
@@ -30,7 +30,7 @@ exports.getAllByRole = async (req, res) => {
   }
 };
 
-// 💼 VOIR PORTEFEUILLE D'UN UTILISATEUR
+// VOIR PORTEFEUILLE D'UN UTILISATEUR
 exports.getUserPortfolio = async (req, res) => {
   try {
     const userId = req.params.id;

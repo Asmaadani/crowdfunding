@@ -2,7 +2,7 @@ const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
-// 🔐 REGISTER
+// REGISTER
 exports.register = async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
@@ -22,7 +22,7 @@ exports.register = async (req, res) => {
   }
 };
 
-// 🔐 LOGIN
+// LOGIN
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -50,7 +50,7 @@ exports.login = async (req, res) => {
   }
 };
 
-// 💰 ALIMENTER LE SOLDE (Investor)
+// ALIMENTER LE SOLDE (Investor)
 exports.topUpBalance = async (req, res) => {
   try {
     const { amount } = req.body;

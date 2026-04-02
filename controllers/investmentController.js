@@ -59,7 +59,7 @@ exports.invest = async (req, res) => {
 };
 
 
-// 📜 MES INVESTISSEMENTS
+// MES INVESTISSEMENTS
 exports.getMyInvestments = async (req, res) => {
   try {
     const investments = await Investment.find({ investor: req.user.id })

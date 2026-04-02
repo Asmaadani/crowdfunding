@@ -25,7 +25,7 @@ exports.getMyProjects = async (req, res) => {
   const projects = await Project.find({ owner: req.user.id });
   res.json(projects);
 };
-// 📝 MODIFIER UN PROJET (Avant fermeture)
+// MODIFIER UN PROJET (Avant fermeture)
 exports.updateProject = async (req, res) => {
   try {
     const project = await Project.findOne({ _id: req.params.id, owner: req.user.id });
@@ -39,7 +39,7 @@ exports.updateProject = async (req, res) => {
   }
 };
 
-// 🗑️ SUPPRIMER UN PROJET
+// SUPPRIMER UN PROJET
 exports.deleteProject = async (req, res) => {
   try {
     await Project.findOneAndDelete({ _id: req.params.id, owner: req.user.id });
@@ -49,7 +49,7 @@ exports.deleteProject = async (req, res) => {
   }
 };
 
-// 🔒 FERMER MANUELLEMENT
+// FERMER MANUELLEMENT
 exports.closeProject = async (req, res) => {
   try {
     const project = await Project.findOneAndUpdate(

@@ -1,4 +1,3 @@
-// src/server.js
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
@@ -13,7 +12,6 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("🔥 MongoDB Connecté"))
   .catch(err => console.log(err));
 
-// Utilisation des routes
 app.use('/api', apiRoutes);
 
 const PORT = process.env.PORT || 5000;
